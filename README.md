@@ -1,5 +1,7 @@
 # RawConsole - A Simple Console for PHP Applications
 
+[![Build Status](https://travis-ci.org/rawphp/RawConsole.svg?branch=master)](https://travis-ci.org/rawphp/RawConsole)
+
 ## Package Features
 - Define custom commands
 - Easily run commands from the command line
