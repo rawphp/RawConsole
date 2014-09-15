@@ -1,22 +1,20 @@
-
 # RawConsole - A Simple Console for PHP Applications
 
 ## Package Features
-
 - Define custom commands
-- Easly run commands from the command line
+- Easily run commands from the command line
 
 ## Installation
 
 ### Composer
 RawConsole is available via [Composer/Packagist](https://packagist.org/packages/rawphp/raw-console).
 
-Add `"rawphp/raw-console": "dev-master"` to the require block in your composer.json and then run `composer install`.
+Add `"rawphp/raw-console": "0.*@dev"` to the require block in your composer.json and then run `composer install`.
 
 ```json
 {
         "require": {
-            "rawphp/raw-console": "dev-master"
+            "rawphp/raw-console": "0.*@dev"
         }
 }
 ```
@@ -24,7 +22,7 @@ Add `"rawphp/raw-console": "dev-master"` to the require block in your composer.j
 You can also simply run the following from the command line:
 
 ```sh
-composer require rawphp/raw-console "dev-master"
+composer require rawphp/raw-console "0.*@dev"
 ```
 
 ### Tarball

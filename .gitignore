@@ -7,3 +7,4 @@ project.xml
 project.properties
 /tests/build/
 /composer.lock
+!/tests/_output/empty
