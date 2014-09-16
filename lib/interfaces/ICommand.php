@@ -69,5 +69,5 @@ interface ICommand
     /**
      * Prints the help menu for the command.
      */
-    public function help();
+    public function help( );
 }

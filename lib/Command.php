@@ -58,9 +58,69 @@ abstract class Command extends Component implements ICommand
      */
     public $description         = NULL;
     /**
+     * @var string
+     */
+    public $copyright           = NULL;
+    /**
+     * @var string
+     */
+    public $supportEmail        = NULL;
+    /**
+     * @var string
+     */
+    public $supportSite         = NULL;
+    /**
+     * @var string
+     */
+    public $supportForum        = NULL;
+    /**
+     * @var string
+     */
+    public $supportSource       = NULL;
+    /**
      * @var array
      */
     public $options             = array( );
+    
+    /**
+     * Constructs a new command instance.
+     */
+    public function __construct( )
+    {
+        $this->init( );
+    }
+    
+    /**
+     * This method adds the help and verbose options to the command.
+     * 
+     * NOTE: Do not call this method from subclasses. It is already called
+     * by the constructor.
+     * 
+     * You can optionally remove these options by clearing the command
+     * options array before adding your own commands.
+     */
+    public function init( )
+    {
+        $option = new Option( );
+        $option->shortCode   = 'h';
+        $option->longCode    = 'help';
+        $option->isOptional  = TRUE;
+        $option->type        = Type::BOOLEAN;
+        $option->description = 'Show the help menu';
+        
+        $this->options[] = $option;
+        
+        $option = new Option( );
+        $option->shortCode   = 'v';
+        $option->longCode    = 'verbose';
+        $option->isOptional  = TRUE;
+        $option->type        = Type::BOOLEAN;
+        $option->description = 'Show detailed log';
+        
+        $this->options[] = $option;
+        
+        $this->doAction( self::ON_COMMAND_INIT_ACTION );
+    }
     
     /**
      * Configures the command.
@@ -134,6 +194,7 @@ abstract class Command extends Component implements ICommand
         
     }
     
-    const ON_ADD_OPTION_ACTION = 'on_add_option_action';
-    const ON_ADD_OPTION_FILTER = 'on_add_option_filter';
+    const ON_COMMAND_INIT_ACTION    = 'on_command_init_action';
+    const ON_ADD_OPTION_ACTION      = 'on_add_option_action';
+    const ON_ADD_OPTION_FILTER      = 'on_add_option_filter';
 }

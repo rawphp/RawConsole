@@ -56,6 +56,12 @@ class GreetCommand extends Command
      */
     public function configure( )
     {
+        $this->name          = 'Greet Me';
+        $this->description   = 'Greets you by whatever name you want ;)';
+        $this->copyright     = '(c) 2014 RawPHP.org';
+        $this->supportSite   = 'https://github.com/rawphp/RawConsole/issues';
+        $this->supportSource = 'https://github.com/rawphp/RawConsole';
+        
         $option = new Option( );
         $option->shortCode   = 'n';
         $option->longCode    = 'name';
