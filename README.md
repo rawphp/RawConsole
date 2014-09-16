@@ -1,6 +1,6 @@
-# RawConsole - A Simple Console for PHP Applications
+# RawConsole - A Simple Console for PHP Applications [![Build Status](https://travis-ci.org/rawphp/RawConsole.svg?branch=master)](https://travis-ci.org/rawphp/RawConsole)
 
-[![Build Status](https://travis-ci.org/rawphp/RawConsole.svg?branch=master)](https://travis-ci.org/rawphp/RawConsole)
+[![Latest Stable Version](https://poser.pugx.org/rawphp/raw-console/v/stable.svg)](https://packagist.org/packages/rawphp/raw-console) [![Total Downloads](https://poser.pugx.org/rawphp/raw-console/downloads.svg)](https://packagist.org/packages/rawphp/raw-console) [![Latest Unstable Version](https://poser.pugx.org/rawphp/raw-console/v/unstable.svg)](https://packagist.org/packages/rawphp/raw-console) [![License](https://poser.pugx.org/rawphp/raw-console/license.svg)](https://packagist.org/packages/rawphp/raw-console)
 
 ## Package Features
 - Define custom commands
