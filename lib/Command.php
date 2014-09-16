@@ -56,6 +56,10 @@ abstract class Command extends Component implements ICommand
     /**
      * @var string
      */
+    public $version             = NULL;
+    /**
+     * @var string
+     */
     public $description         = NULL;
     /**
      * @var string
@@ -106,7 +110,7 @@ abstract class Command extends Component implements ICommand
         $option->longCode    = 'help';
         $option->isOptional  = TRUE;
         $option->type        = Type::BOOLEAN;
-        $option->description = 'Show the help menu';
+        $option->shortDescription = 'Show the help menu';
         
         $this->options[] = $option;
         
@@ -115,7 +119,7 @@ abstract class Command extends Component implements ICommand
         $option->longCode    = 'verbose';
         $option->isOptional  = TRUE;
         $option->type        = Type::BOOLEAN;
-        $option->description = 'Show detailed log';
+        $option->shortDescription = 'Show detailed log';
         
         $this->options[] = $option;
         
@@ -153,35 +157,70 @@ abstract class Command extends Component implements ICommand
     }
     
     /**
+     * Removes an option by its long code.
+     * 
+     * @param string $longCode option long code
+     * 
+     * @return bool TRUE on success, FALSE on failure
+     */
+    public function removeOption( $longCode )
+    {
+        $retVal = FALSE;
+        
+        $i = 0;
+        
+        foreach( $this->options as $option )
+        {
+            if ( $longCode === $option->longCode )
+            {
+                break;
+            }
+            
+            $i++;
+        }
+        
+        if ( $i !== count( $this->options ) )
+        {
+            unset( $this->options[ $i ] );
+            
+            $retVal = TRUE;
+        }
+        
+        $this->doAction( self::ON_REMOVE_OPTION_ACTION );
+        
+        return $this->filter( self::ON_REMOVE_OPTION_FILTER, $retVal, $longCode );
+    }
+    
+    /**
      * Gets an option either by short or long code.
      * 
-     * @param Command $command the command
-     * @param string  $name    the command name (code)
+     * @param Command $command  the command
+     * @param string  $longCode the command name (code)
      * 
      * @return Option the option
      * 
      * @throws CommandException if option is not found
      */
-    public static function getOption( Command $command, $name )
+    public static function getOption( Command $command, $longCode )
     {
         foreach( $command->options as $op )
         {
-            if ( '--' === substr( $name, 0, 2 ) )
+            if ( '--' === substr( $longCode, 0, 2 ) )
             {
-                $name = substr( $name, 2 );
+                $longCode = substr( $longCode, 2 );
             }
-            elseif ( '-' === substr( $name, 0, 1 ) )
+            elseif ( '-' === substr( $longCode, 0, 1 ) )
             {
-                $name = substr( $name, 1 );
+                $longCode = substr( $longCode, 1 );
             }
             
-            if ( $op->shortCode === $name || $op->longCode === $name )
+            if ( $op->shortCode === $longCode || $op->longCode === $longCode )
             {
                 return $op;
             }
         }
         
-        throw new CommandException( 'Unable to find option: ' . $name );
+        throw new CommandException( 'Unable to find option: ' . $longCode );
     }
     
     /**
@@ -196,5 +235,8 @@ abstract class Command extends Component implements ICommand
     
     const ON_COMMAND_INIT_ACTION    = 'on_command_init_action';
     const ON_ADD_OPTION_ACTION      = 'on_add_option_action';
+    const ON_REMOVE_OPTION_ACTION   = 'on_remove_option_action';
+    
     const ON_ADD_OPTION_FILTER      = 'on_add_option_filter';
+    const ON_REMOVE_OPTION_FILTER   = 'on_remove_option_filter';
 }

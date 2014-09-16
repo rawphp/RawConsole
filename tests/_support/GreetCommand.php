@@ -57,6 +57,7 @@ class GreetCommand extends Command
     public function configure( )
     {
         $this->name          = 'Greet Me';
+        $this->version       = 'v1.0.0';
         $this->description   = 'Greets you by whatever name you want ;)';
         $this->copyright     = '(c) 2014 RawPHP.org';
         $this->supportSite   = 'https://github.com/rawphp/RawConsole/issues';
@@ -67,7 +68,9 @@ class GreetCommand extends Command
         $option->longCode    = 'name';
         $option->type        = Type::STRING;
         $option->isRequired  = TRUE;
-        $option->description = 'Name of person you want to greet';
+        $option->shortDescription = 'Name of person you want to greet';
+        $option->longDescription  = 'This is the name of the person you want to greet. 
+                                     It can be any name you like';
         
         $this->addOption( $option );
         
@@ -76,7 +79,7 @@ class GreetCommand extends Command
         $option->longCode    = 'yell';
         $option->type        = Type::BOOLEAN;
         $option->isOptional  = TRUE;
-        $option->description = 'The greeting will be printed in uppercase letters';
+        $option->shortDescription = 'The greeting will be printed in uppercase letters';
         
         $this->addOption( $option );
     }

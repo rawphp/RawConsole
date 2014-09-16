@@ -122,4 +122,40 @@ class CommandTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals( Type::BOOLEAN, $option->type );
     }
     
+    /**
+     * Test removing the first option in the command.
+     */
+    public function testRemoveFirstOption( )
+    {
+        $count = count( $this->command->options );
+        
+        $this->command->removeOption( $this->command->options[ 0 ]->longCode );
+        
+        $this->assertEquals( $count - 1, count( $this->command->options ) );
+    }
+    
+    /**
+     * Test removing the last option in the command.
+     */
+    public function testRemoveLastOption( )
+    {
+        $count = count( $this->command->options );
+        
+        $this->command->removeOption( $this->command->options[ $count - 1 ]->longCode );
+        
+        $this->assertEquals( $count - 1, count( $this->command->options ) );
+    }
+    
+    /**
+     * Test removing the second option in the command.
+     */
+    public function testRemoveSecondOption( )
+    {
+        $count = count( $this->command->options );
+        
+        $this->command->removeOption( $this->command->options[ 1 ]->longCode );
+        
+        $this->assertEquals( $count - 1, count( $this->command->options ) );
+    }
+    
 }

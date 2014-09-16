@@ -47,6 +47,7 @@ Please submit bug reports, suggestions and pull requests to the [GitHub issue tr
 #### 16-09-2014
 - Added new support properties to base Command class.
 - Added new `init( )` method which adds the help and verbose options to the command options list.
+- Added new StandardHelpWriter class for writing command help output. ( Not yet connected with the console ).
 
 #### 15-09-2014
 - Initial Code Commit

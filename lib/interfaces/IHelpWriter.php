@@ -36,7 +36,7 @@
 namespace RawPHP\RawConsole;
 
 /**
- * The Command Interface.
+ * The Help Writer Interface.
  * 
  * @category  PHP
  * @package   RawPHP/RawConsole
@@ -45,29 +45,19 @@ namespace RawPHP\RawConsole;
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
-interface ICommand
+interface IHelpWriter
 {
     /**
-     * Configures the command.
-     */
-    public function configure( );
-    
-    /**
-     * Executes the primary command action.
+     * This method writes the help to the console.
      * 
-     * Must be overriden by sub-classes.
-     */
-    public function execute( );
-    
-    /**
-     * Adds a new option to the command.
+     * @param Command $command the command instance
+     * @param Option  $option  optional option
      * 
-     * @param Option $option the option to add
+     * @action ON_BEFORE_WRITE_HELP_ACTION
+     * 
+     * @filter ON_WRITE_HELP_FILTER(1)
+     * 
+     * @action ON_AFTER_WRITE_HELP_ACTION
      */
-    public function addOption( Option $option );
-    
-    /**
-     * Prints the help menu for the command.
-     */
-    public function help( );
+    public function write( Command $command, Option $option = NULL );
 }

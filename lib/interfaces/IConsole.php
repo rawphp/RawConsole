@@ -36,7 +36,7 @@
 namespace RawPHP\RawConsole;
 
 /**
- * Console CR.
+ * The Console Interface.
  * 
  * @category  PHP
  * @package   RawPHP/RawConsole

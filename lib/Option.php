@@ -61,7 +61,11 @@ class Option extends Component
     /**
      * @var string
      */
-    public $description         = NULL;
+    public $shortDescription    = NULL;
+    /**
+     * @var string
+     */
+    public $longDescription     = NULL;
     /**
      * @var string
      */

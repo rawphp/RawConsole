@@ -62,7 +62,7 @@ class GreetFullCommand extends GreetCommand
         $option->longCode    = 'last';
         $option->type        = Type::STRING;
         $option->isOptional  = TRUE;
-        $option->description = 'If included, then it will greet by full name';
+        $option->shortDescription = 'If included, then it will greet by full name';
         
         $this->options[] = $option;
     }
