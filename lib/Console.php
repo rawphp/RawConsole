@@ -174,7 +174,7 @@ class Console extends Component implements IConsole
      * 
      * @throws CommandException
      */
-    public function processArgs( Command &$command, $args )
+    public function processArgs( ICommand &$command, $args )
     {
         $this->doAction( self::ON_BEFORE_PROCESS_ARGS_ACTION );
         

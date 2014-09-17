@@ -91,7 +91,7 @@ abstract class Command extends Component implements ICommand
      */
     public function __construct( )
     {
-        $this->init( );
+        $this->init( NULL );
     }
     
     /**
@@ -102,8 +102,10 @@ abstract class Command extends Component implements ICommand
      * 
      * You can optionally remove these options by clearing the command
      * options array before adding your own commands.
+     * 
+     * @param array $config optional configuration array
      */
-    public function init( )
+    public function init( $config = NULL )
     {
         $option = new Option( );
         $option->shortCode   = 'h';

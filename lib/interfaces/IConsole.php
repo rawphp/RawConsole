@@ -87,5 +87,5 @@ interface IConsole
      * 
      * @throws CommandException
      */
-    public function processArgs( Command &$command, $args );
+    public function processArgs( ICommand &$command, $args );
 }
