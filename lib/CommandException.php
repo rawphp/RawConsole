@@ -35,7 +35,7 @@
 
 namespace RawPHP\RawConsole;
 
-use RawPHP\RawBase\Exceptions\RawException;
+use RawPHP\RawBase\RawException;
 
 /**
  * Base class for commands used on the command-line.

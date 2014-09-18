@@ -38,7 +38,6 @@ namespace RawPHP\RawConsole\Writers\Tests;
 use RawPHP\RawConsole\StandardHelpWriter;
 use RawPHP\RawConsole\Command;
 use RawPHP\RawConsole\Tests\GreetCommand;
-use PHPUnit_Framework_TestCase;
 
 /**
  * Base class for commands used on the command-line.
@@ -50,7 +49,7 @@ use PHPUnit_Framework_TestCase;
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
-class StandardHelpWriterTest extends PHPUnit_Framework_TestCase
+class StandardHelpWriterTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var StandardHelpWriter
