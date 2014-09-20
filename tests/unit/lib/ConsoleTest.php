@@ -64,7 +64,7 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
         parent::setUp();
         
         $this->console = new Console( );
-        $this->console->init( $config[ 'console' ] );
+        $this->console->init( $config );
     }
     
     /**

@@ -34,13 +34,14 @@
  */
 
 use RawPHP\RawConsole\Console;
+use RawPHP\RawYaml\Yaml;
 
 defined( 'DS' )                 || define( 'DS', DIRECTORY_SEPARATOR );
 defined( 'SUPPORT_DIR' )        || define( 'SUPPORT_DIR', dirname( __FILE__ ) . DS . '_support' . DS );
 
 require_once dirname( dirname( __FILE__ ) ) . DS . 'vendor' . DS . 'autoload.php';
 
-$config = include_once SUPPORT_DIR . 'config.php';
+$config = ( new Yaml( ) )->load( SUPPORT_DIR . 'config.yml' );
 
 require_once SUPPORT_DIR . 'GreetCommand.php';
 require_once SUPPORT_DIR . 'GreetFullCommand.php';

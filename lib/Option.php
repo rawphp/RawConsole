@@ -124,8 +124,8 @@ class Option extends Component
     /**
      * Sets the required argument.
      * 
-     * @param Option &$option the option to set to
-     * @param mixed  $arg     the argument
+     * @param Option $option the option to set to
+     * @param mixed  $arg    the argument
      * 
      * @throws CommandException if argument is missing
      */
@@ -149,8 +149,8 @@ class Option extends Component
     /**
      * Sets an optional argument if available.
      * 
-     * @param Option &$option the option to set to
-     * @param mixed  $arg     the argument
+     * @param Option $option the option to set to
+     * @param mixed  $arg    the argument
      */
     public static function setOptionalValue( Option &$option, $arg )
     {

@@ -79,8 +79,8 @@ interface IConsole
      * Processes the command line arguments and sets the option
      * values for the command.
      * 
-     * @param ICommand &$command the command reference
-     * @param array    $args     command line args
+     * @param ICommand $command the command reference
+     * @param array    $args    command line args
      * 
      * @action ON_BEFORE_PROCESS_ARGS_ACTION
      * @action ON_AFTER_PROCESS_ARGS_ACTION
