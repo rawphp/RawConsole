@@ -57,6 +57,25 @@ class Console extends Component implements IConsole
      * @var array
      */
     public $arguments       = array( );
+    /**
+     * @var array
+     */
+    public $namespaces      = array( );
+    
+    /**
+     * Initialises the console.
+     * 
+     * @param array $config configuration array
+     */
+    public function init( $config = NULL )
+    {
+        parent::init( $config );
+        
+        if ( isset( $config[ 'command_namespaces' ] ) )
+        {
+            $this->namespaces = $config[ 'command_namespaces' ];
+        }
+    }
     
     /**
      * Runs the requested command.
@@ -113,7 +132,7 @@ class Console extends Component implements IConsole
      */
     public function getCommand( $args )
     {
-        global $commandNamespaces;
+        //global $commandNamespaces;
         
         $this->doAction( self::ON_BEFORE_GET_COMMAND_ACTION );
         
@@ -127,19 +146,9 @@ class Console extends Component implements IConsole
             $command = new $class( );
         }
         
-        if ( NULL === $command && defined( 'RAW_COMMAND_NAMESPACE' ) )
+        if ( NULL === $command && !empty( $this->namespaces ) )
         {
-            $name = RAW_COMMAND_NAMESPACE . $class;
-            
-            if ( class_exists( $name ) )
-            {
-                $command = new $name( );
-            }
-        }
-        
-        if ( NULL === $command && !empty( $commandNamespaces ) )
-        {
-            foreach( $commandNamespaces as $ns )
+            foreach( $this->namespaces as $ns )
             {
                 $name = $ns . $class;
                 

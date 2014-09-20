@@ -33,23 +33,20 @@
  * @link      http://rawphp.org/
  */
 
-use RawPHP\RawConsole\Console;
+$config = array();
 
-defined( 'DS' )                 || define( 'DS', DIRECTORY_SEPARATOR );
-defined( 'SUPPORT_DIR' )        || define( 'SUPPORT_DIR', dirname( __FILE__ ) . DS . '_support' . DS );
+/*******************************************************************************
+ * Console Settings
+ * -----------------------------------------------------------------------------
+ * These are the database settings for testing.
+ * 
+ ******************************************************************************/
+$config[ 'console' ][ 'class' ] = 'RawPHP\\RawConsole\\Console';
+$config[ 'console' ][ 'command_namespaces' ][] = 'RawPHP\\RawConsole\\';
+$config[ 'console' ][ 'command_namespaces' ][] = 'RawPHP\\RawConsole\\Tests\\';
+$config[ 'console' ][ 'command_namespaces' ][] = 'RawPHP\\RawConsole\\Foreign1\\Tests\\';
+$config[ 'console' ][ 'command_namespaces' ][] = 'RawPHP\\RawConsole\\Foreign2\\Tests\\';
+$config[ 'console' ][ 'debug' ] = TRUE;
 
-require_once dirname( dirname( __FILE__ ) ) . DS . 'vendor' . DS . 'autoload.php';
 
-$config = include_once SUPPORT_DIR . 'config.php';
-
-require_once SUPPORT_DIR . 'GreetCommand.php';
-require_once SUPPORT_DIR . 'GreetFullCommand.php';
-
-require_once SUPPORT_DIR . 'NoNSGreetCommand.php';
-require_once SUPPORT_DIR . 'ForeignNSOneCommand.php';
-require_once SUPPORT_DIR . 'ForeignNSTwoCommand.php';
-
-$console = new Console( );
-$console->init( $config );
-
-$console->run( $_SERVER[ 'argv' ] );
+return $config;

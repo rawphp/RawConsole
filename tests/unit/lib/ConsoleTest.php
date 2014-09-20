@@ -59,9 +59,12 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
+        global $config;
+        
         parent::setUp();
         
         $this->console = new Console( );
+        $this->console->init( $config[ 'console' ] );
     }
     
     /**
@@ -83,21 +86,6 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
-     * Test getting command by name.
-     */
-    public function testGetCommandByName( )
-    {
-        $this->_defineNamespace( );
-        
-        $args = array( 'program', 'greet' );
-        
-        $command = $this->console->getCommand( $args );
-        
-        $this->assertNotNull( $command );
-        $this->assertInstanceOf( 'RawPHP\\RawConsole\\Tests\\GreetCommand', $command );
-    }
-    
-    /**
      * Test getting invalid command.
      */
     public function testGetInvalidCommandByName( )
@@ -114,8 +102,6 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
      */
     public function testRunCommandsInArrayNamespaces( )
     {
-        initCommandNamespacesArray( );
-        
         $args = array( 'program', 'ForeignNSOne', '--name', 'John', '--yell' );
         
         $this->console->run( $args );
@@ -134,28 +120,4 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
         
         $this->expectOutputString( 'HELLO, JOHN SMITH' . PHP_EOL );
     }
-    
-    /**
-     * Helper method to define namespace.
-     */
-    private function _defineNamespace( )
-    {
-        define( 'RAW_COMMAND_NAMESPACE', 'RawPHP\\RawConsole\\Tests\\' );
-    }
-}
-
-/**
- * Helper method to setup commandNamespaces array in the 
- * global scope.
- * 
- * @global array $commandNamespaces namespaces list
- */
-function initCommandNamespacesArray( )
-{
-    global $commandNamespaces;
-    
-    $commandNamespaces = array(
-        'RawPHP\\RawConsole\\Foreign1\\Tests\\',
-        'RawPHP\\RawConsole\\Foreign2\\Tests\\',
-    );
 }
