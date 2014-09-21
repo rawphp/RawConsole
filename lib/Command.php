@@ -87,18 +87,7 @@ abstract class Command extends Component implements ICommand
     public $options             = array( );
     
     /**
-     * Constructs a new command instance.
-     */
-    public function __construct( )
-    {
-        $this->init( NULL );
-    }
-    
-    /**
      * This method adds the help and verbose options to the command.
-     * 
-     * NOTE: Do not call this method from subclasses. It is already called
-     * by the constructor.
      * 
      * You can optionally remove these options by clearing the command
      * options array before adding your own commands.

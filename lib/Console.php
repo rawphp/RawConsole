@@ -155,6 +155,7 @@ class Console extends Component implements IConsole
                 if ( class_exists( $name ) )
                 {
                     $command = new $name( );
+                    $command->init( $args );
                     
                     break;
                 }

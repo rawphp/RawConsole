@@ -59,7 +59,9 @@ class StandardHelpWriterTest extends \PHPUnit_Framework_TestCase
      * @var Command
      */
     private $_command       = NULL;
-    
+    /**
+     * @var string
+     */
     private $_helpText      = '';
     
     /**
@@ -71,6 +73,7 @@ class StandardHelpWriterTest extends \PHPUnit_Framework_TestCase
         
         $this->writer = new StandardHelpWriter( );
         $this->_command = new GreetCommand( );
+        $this->_command->init( );
         $this->_command->configure( );
     }
     

@@ -63,6 +63,7 @@ class CommandTest extends \PHPUnit_Framework_TestCase
         parent::setUp();
         
         $this->command = new GreetCommand( );
+        $this->command->init( );
         $this->command->configure( );
     }
     
