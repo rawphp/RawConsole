@@ -1,6 +1,9 @@
-# RawConsole - A Simple Console for PHP Applications [![Build Status](https://travis-ci.org/rawphp/RawConsole.svg?branch=master)](https://travis-ci.org/rawphp/RawConsole)
+# RawConsole - A Simple Console for PHP Applications
 
-[![Latest Stable Version](https://poser.pugx.org/rawphp/raw-console/v/stable.svg)](https://packagist.org/packages/rawphp/raw-console) [![Total Downloads](https://poser.pugx.org/rawphp/raw-console/downloads.svg)](https://packagist.org/packages/rawphp/raw-console) [![Latest Unstable Version](https://poser.pugx.org/rawphp/raw-console/v/unstable.svg)](https://packagist.org/packages/rawphp/raw-console) [![License](https://poser.pugx.org/rawphp/raw-console/license.svg)](https://packagist.org/packages/rawphp/raw-console)
+[![Build Status](https://travis-ci.org/rawphp/RawConsole.svg?branch=master)](https://travis-ci.org/rawphp/RawConsole)
+
+[![Latest Stable Version](https://poser.pugx.org/rawphp/raw-console/v/stable.svg)](https://packagist.org/packages/rawphp/raw-console) [![Total Downloads](https://poser.pugx.org/rawphp/raw-console/downloads.svg)](https://packagist.org/packages/rawphp/raw-console) 
+[![Latest Unstable Version](https://poser.pugx.org/rawphp/raw-console/v/unstable.svg)](https://packagist.org/packages/rawphp/raw-console) [![License](https://poser.pugx.org/rawphp/raw-console/license.svg)](https://packagist.org/packages/rawphp/raw-console)
 
 ## Package Features
 - Define custom commands
@@ -44,7 +47,10 @@ Please submit bug reports, suggestions and pull requests to the [GitHub issue tr
 
 ## Changelog
 
-#### 20-09-2014
+#### 22-09-2014
+- Updated to PHP 5.3.
+
+#### 21-09-2014
 - Command requires initialisation by calling `init( )` when constructing.
 
 #### 20-09-2014

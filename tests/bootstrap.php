@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * 
- * PHP version 5.4
+ * PHP version 5.3
  * 
  * @category  PHP
  * @package   RawPHP/RawConsole
@@ -41,7 +41,8 @@ defined( 'SUPPORT_DIR' )        || define( 'SUPPORT_DIR', dirname( __FILE__ ) . 
 
 require_once dirname( dirname( __FILE__ ) ) . DS . 'vendor' . DS . 'autoload.php';
 
-$config = ( new Yaml( ) )->load( SUPPORT_DIR . 'config.yml' );
+$yaml = new Yaml( );
+$config = $yaml->load( SUPPORT_DIR . 'config.yml' );
 
 require_once SUPPORT_DIR . 'GreetCommand.php';
 require_once SUPPORT_DIR . 'GreetFullCommand.php';
