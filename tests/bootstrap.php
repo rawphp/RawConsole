@@ -33,7 +33,6 @@
  * @link      http://rawphp.org/
  */
 
-use RawPHP\RawConsole\Console;
 use RawPHP\RawYaml\Yaml;
 
 defined( 'DS' )                 || define( 'DS', DIRECTORY_SEPARATOR );
@@ -50,8 +49,3 @@ require_once SUPPORT_DIR . 'GreetFullCommand.php';
 require_once SUPPORT_DIR . 'NoNSGreetCommand.php';
 require_once SUPPORT_DIR . 'ForeignNSOneCommand.php';
 require_once SUPPORT_DIR . 'ForeignNSTwoCommand.php';
-
-$console = new Console( );
-$console->init( $config );
-
-$console->run( $_SERVER[ 'argv' ] );

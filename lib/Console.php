@@ -91,27 +91,16 @@ class Console extends Component implements IConsole
     {
         $this->doAction( self::ON_BEFORE_RUN_ACTION );
         
-        try
-        {
-            $this->command = $this->getCommand( $args );
+        $this->command = $this->getCommand( $args );
 
-            if ( NULL == $this->command )
-            {
-                throw new CommandException( 'Command: ' . $args[ 1 ] . ' not found' );
-            }
-
-            $this->processArgs( $this->command, $args );
-
-            $this->command->execute( );
-        }
-        catch ( CommandException $e )
+        if ( NULL == $this->command )
         {
-            echo 'Error: ' . $e->getMessage( ) . PHP_EOL;
+            throw new CommandException( 'Command: ' . $args[ 1 ] . ' not found' );
         }
-        catch ( \Exception $e )
-        {
-            echo 'Unknown error occurred' . PHP_EOL;
-        }
+
+        $this->processArgs( $this->command, $args );
+
+        $this->command->execute( );
         
         $this->doAction( self::ON_AFTER_RUN_ACTION );
     }
