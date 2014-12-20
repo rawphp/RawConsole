@@ -23,91 +23,53 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * 
- * PHP version 5.3
+ * PHP version 5.4
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
- * @author    Tom Kaczohca <tom@rawphp.org>
- * @copyright 2014 Tom Kaczocha
- * @license   http://rawphp.org/license.txt MIT
- * @link      http://rawphp.org/
- */
-
-namespace RawPHP\RawConsole\Tests;
-
-use RawPHP\RawConsole\Option;
-
-/**
- * Option class tests.
- * 
- * @category  PHP
- * @package   RawPHP/RawConsole
+ * @package   RawPHP\RawConsole\Contract
  * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
-class OptionTest extends \PHPUnit_Framework_TestCase
+
+namespace RawPHP\RawConsole\Contract;
+
+use RawPHP\RawConsole\Option;
+
+/**
+ * The Command Interface.
+ * 
+ * @category  PHP
+ * @package   RawPHP\RawConsole\Contract
+ * @author    Tom Kaczocha <tom@rawphp.org>
+ * @copyright 2014 Tom Kaczocha
+ * @license   http://rawphp.org/license.txt MIT
+ * @link      http://rawphp.org/
+ */
+interface ICommand
 {
     /**
-     * @var Option
+     * Configures the command.
      */
-    protected $option;
+    public function configure( );
     
     /**
-     * Setup before each test.
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        
-        $this->option = new Option( );
-    }
-    
-    /**
-     * Cleanup after each test.
-     */
-    public function tearDown()
-    {
-        parent::tearDown();
-        
-        $this->option = NULL;
-    }
-    
-    /**
-     * Test option instantiated correctly.
-     */
-    public function testOptionInstantiatedCorrectly( )
-    {
-        $this->assertNotNull( $this->option );
-    }
-    
-    /**
-     * Tests that is short code works correctly.
-     */
-    public function testIsShortCodeWorksCorrectly( )
-    {
-        $this->assertTrue ( Option::isShortCode( '-a' ) );
-        $this->assertFalse( Option::isShortCode( '--' ) );
-        $this->assertFalse( Option::isShortCode( '--a' ) );
-    }
-    
-    /**
-     * Tests that is long code works correctly. 
-     */
-    public function testIsLongCodeWorksCorrectly( )
-    {
-        $this->assertTrue ( Option::isLongCode( '--a' ) );
-        $this->assertFalse( Option::isLongCode( '-a' ) );
-    }
-    
-    /**
-     * Test exception is thrown for invalid long argument.
+     * Executes the primary command action.
      * 
-     * @expectedException RawPHP\RawConsole\CommandException
+     * Must be overridden by sub-classes.
      */
-    public function testExceptionisThrownForInvalidArg( )
-    {
-        Option::isLongCode( '---' );
-    }
+    public function execute( );
+    
+    /**
+     * Adds a new option to the command.
+     * 
+     * @param Option $option the option to add
+     */
+    public function addOption( Option $option );
+    
+    /**
+     * Prints the help menu for the command.
+     */
+    public function help( );
 }

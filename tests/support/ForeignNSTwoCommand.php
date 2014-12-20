@@ -26,29 +26,27 @@
  * PHP version 5.4
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
- * @author    Tom Kaczohca <tom@rawphp.org>
+ * @package   RawPHP\RawConsole\Foreign2\Tests
+ * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
 
-namespace RawPHP\RawConsole;
+namespace RawPHP\RawConsole\Foreign2\Tests;
+
+use RawPHP\RawConsole\Tests\GreetCommand;
 
 /**
- * Base class for commands used on the command-line.
+ * Test Greet class in a different namespace.
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
- * @author    Tom Kaczohca <tom@rawphp.org>
+ * @package   RawPHP\RawConsole\Foreign2\Tests
+ * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
-class Type
+class ForeignNSTwoCommand extends GreetCommand
 {
-    const INTEGER   = 'integer';
-    const DECIMAL   = 'decimal';
-    const STRING    = 'string';
-    const BOOLEAN   = 'boolean';
 }

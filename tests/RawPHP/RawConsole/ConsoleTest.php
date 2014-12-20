@@ -23,11 +23,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * 
- * PHP version 5.3
+ * PHP version 5.4
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
- * @author    Tom Kaczohca <tom@rawphp.org>
+ * @package   RawPHP\RawConsole\Tests
+ * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
@@ -35,19 +35,20 @@
 
 namespace RawPHP\RawConsole\Tests;
 
+use PHPUnit_Framework_TestCase;
 use RawPHP\RawConsole\Console;
 
 /**
  * Option class tests.
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
+ * @package   RawPHP\RawConsole\Tests
  * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
-class ConsoleTest extends \PHPUnit_Framework_TestCase
+class ConsoleTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var Console
@@ -90,7 +91,7 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetInvalidCommandByName( )
     {
-        $args = array( 'program', 'fake' );
+        $args = [ 'program', 'fake' ];
         
         $command = $this->console->getCommand( $args );
         
@@ -102,7 +103,7 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
      */
     public function testRunCommandsInArrayNamespaces( )
     {
-        $args = array( 'program', 'ForeignNSOne', '--name', 'John', '--yell' );
+        $args = [ 'program', 'ForeignNSOne', '--name', 'John', '--yell' ];
         
         $this->console->run( $args );
         
@@ -114,7 +115,7 @@ class ConsoleTest extends \PHPUnit_Framework_TestCase
      */
     public function testRunCommandWithExtraOptions( )
     {
-        $args = array( 'program', 'GreetFull', '--name', 'John', '--yell', '-l', 'Smith' );
+        $args = [ 'program', 'GreetFull', '--name', 'John', '--yell', '-l', 'Smith' ];
         
         $this->console->run( $args );
         

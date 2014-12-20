@@ -26,8 +26,8 @@
  * PHP version 5.4
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
- * @author    Tom Kaczohca <tom@rawphp.org>
+ * @package   RawPHP\RawConsole
+ * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
@@ -35,20 +35,20 @@
 
 namespace RawPHP\RawConsole;
 
-use RawPHP\RawBase\Component;
-use RawPHP\RawConsole\Type;
+use RawPHP\RawConsole\Exception\CommandException;
+use RawPHP\RawSupport\Util;
 
 /**
  * Base class for commands used on the command-line.
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
+ * @package   RawPHP\RawConsole
  * @author    Tom Kaczohca <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
-class Option extends Component
+class Option
 {
     /**
      * @var string
@@ -113,7 +113,7 @@ class Option extends Component
             return $retVal;
         }
         
-        if ( ( !is_bool( $arg ) && !Option::validIndex( 2, $arg ) ) || '-' === $arg[ 2 ] )
+        if ( ( !is_bool( $arg ) && !Util::validIndex( 2, $arg ) ) || '-' === $arg[ 2 ] )
         {
             throw new CommandException( 'Unknown option type [ ' . $arg . ' ]' );
         }

@@ -26,48 +26,25 @@
  * PHP version 5.4
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
+ * @package   RawPHP\RawConsole
  * @author    Tom Kaczohca <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
 
-namespace RawPHP\RawConsole;
+use RawPHP\RawConsole\Tests\GreetCommand;
 
 /**
- * The Command Interface.
+ * Greet Command that doesn't use namespaces.
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
+ * @package   RawPHP\RawConsole
  * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
-interface ICommand
+class NoNSGreetCommand extends GreetCommand
 {
-    /**
-     * Configures the command.
-     */
-    public function configure( );
-    
-    /**
-     * Executes the primary command action.
-     * 
-     * Must be overriden by sub-classes.
-     */
-    public function execute( );
-    
-    /**
-     * Adds a new option to the command.
-     * 
-     * @param Option $option the option to add
-     */
-    public function addOption( Option $option );
-    
-    /**
-     * Prints the help menu for the command.
-     */
-    public function help( );
 }

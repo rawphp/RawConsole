@@ -23,28 +23,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * 
- * PHP version 5.4
+ * PHP version 5.3
  * 
  * @category  PHP
- * @package   RawPHP\RawConsole\Tests
+ * @package   RawPHP\RawConsole\Foreign1\Tests
  * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
 
-defined( 'DS' )                 || define( 'DS', DIRECTORY_SEPARATOR );
-defined( 'SUPPORT_DIR' )        || define( 'SUPPORT_DIR', dirname( __FILE__ ) . DS . 'support' . DS );
+namespace RawPHP\RawConsole\Foreign1\Tests;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+use RawPHP\RawConsole\Tests\GreetCommand;
 
-global $config;
-
-$config = include_once SUPPORT_DIR . 'config.php';
-
-require_once SUPPORT_DIR . 'GreetCommand.php';
-require_once SUPPORT_DIR . 'GreetFullCommand.php';
-
-require_once SUPPORT_DIR . 'NoNSGreetCommand.php';
-require_once SUPPORT_DIR . 'ForeignNSOneCommand.php';
-require_once SUPPORT_DIR . 'ForeignNSTwoCommand.php';
+/**
+ * Test Greet class in a different namespace.
+ * 
+ * @category  PHP
+ * @package   RawPHP\RawConsole\Foreign1\Tests
+ * @author    Tom Kaczocha <tom@rawphp.org>
+ * @copyright 2014 Tom Kaczocha
+ * @license   http://rawphp.org/license.txt MIT
+ * @link      http://rawphp.org/
+ */
+class ForeignNSOneCommand extends GreetCommand
+{
+}

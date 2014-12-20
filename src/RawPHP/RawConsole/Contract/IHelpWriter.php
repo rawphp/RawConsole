@@ -23,28 +23,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * 
- * PHP version 5.3
+ * PHP version 5.4
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
- * @author    Tom Kaczohca <tom@rawphp.org>
- * @copyright 2014 Tom Kaczocha
- * @license   http://rawphp.org/license.txt MIT
- * @link      http://rawphp.org/
- */
-
-use RawPHP\RawConsole\Tests\GreetCommand;
-
-/**
- * Greet Command that doesn't use namespaces.
- * 
- * @category  PHP
- * @package   RawPHP/RawConsole
+ * @package   RawPHP\RawConsole\Contract
  * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
-class NoNSGreetCommand extends GreetCommand
+
+namespace RawPHP\RawConsole\Contract;
+
+use RawPHP\RawConsole\Command;
+use RawPHP\RawConsole\Option;
+
+/**
+ * The Help Writer Interface.
+ * 
+ * @category  PHP
+ * @package   RawPHP\RawConsole\Contract
+ * @author    Tom Kaczocha <tom@rawphp.org>
+ * @copyright 2014 Tom Kaczocha
+ * @license   http://rawphp.org/license.txt MIT
+ * @link      http://rawphp.org/
+ */
+interface IHelpWriter
 {
+    /**
+     * This method writes the help to the console.
+     * 
+     * @param Command $command the command instance
+     * @param Option  $option  optional option
+     */
+    public function write( Command $command, Option $option = NULL );
 }

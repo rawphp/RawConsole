@@ -23,30 +23,73 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * 
- * PHP version 5.3
+ * PHP version 5.4
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
- * @author    Tom Kaczohca <tom@rawphp.org>
- * @copyright 2014 Tom Kaczocha
- * @license   http://rawphp.org/license.txt MIT
- * @link      http://rawphp.org/
- */
-
-namespace RawPHP\RawConsole\Foreign1\Tests;
-
-use RawPHP\RawConsole\Tests\GreetCommand;
-
-/**
- * Test Greet class in a different namespace.
- * 
- * @category  PHP
- * @package   RawPHP/RawConsole
+ * @package   RawPHP\RawConsole\Tests
  * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
-class ForeignNSOneCommand extends GreetCommand
+
+namespace RawPHP\RawConsole\Tests;
+
+use RawPHP\RawConsole\Option;
+use RawPHP\RawConsole\Type;
+
+/**
+ * Greet Command that adds last name option to the command.
+ * 
+ * @category  PHP
+ * @package   RawPHP\RawConsole\Tests
+ * @author    Tom Kaczocha <tom@rawphp.org>
+ * @copyright 2014 Tom Kaczocha
+ * @license   http://rawphp.org/license.txt MIT
+ * @link      http://rawphp.org/
+ */
+class GreetFullCommand extends GreetCommand
 {
+    /**
+     * Configures the command.
+     */
+    public function configure()
+    {
+        parent::configure();
+        
+        $option = new Option( );
+        $option->shortCode   = 'l';
+        $option->longCode    = 'last';
+        $option->type        = Type::STRING;
+        $option->isOptional  = TRUE;
+        $option->shortDescription = 'If included, then it will greet by full name';
+        
+        $this->options[] = $option;
+    }
+    
+    /**
+     * Executes the command action.
+     */
+    public function execute()
+    {
+        $name = self::getOption( $this, 'name' )->value;
+        $last = self::getOption( $this, 'last' )->value;
+        $yell = ( bool )self::getOption( $this, 'yell' )->value;
+        
+        $message = 'Hello, ' . $name;
+        
+        if ( !empty( $last ) )
+        {
+            $message .= ' ' . $last;
+        }
+        
+        $message .= PHP_EOL;
+        
+        if ( $yell )
+        {
+            $message = strtoupper( $message );
+        }
+        
+        echo $message;
+    }
 }

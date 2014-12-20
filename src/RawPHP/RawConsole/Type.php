@@ -26,8 +26,8 @@
  * PHP version 5.4
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
- * @author    Tom Kaczohca <tom@rawphp.org>
+ * @package   RawPHP\RawConsole
+ * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
@@ -36,56 +36,19 @@
 namespace RawPHP\RawConsole;
 
 /**
- * The Console Interface.
+ * Base class for commands used on the command-line.
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
- * @author    Tom Kaczocha <tom@rawphp.org>
+ * @package   RawPHP\RawConsole
+ * @author    Tom Kaczohca <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
-interface IConsole
+class Type
 {
-    /**
-     * Runs the requested command.
-     * 
-     * @param array $args command line arguments
-     * 
-     * @action ON_BEFORE_RUN_ACTION
-     * $action ON_AFTER_RUN_ACTION
-     * 
-     * @throws CommandException in exceptional circustances
-     */
-    public function run( $args );
-    
-    /**
-     * Get the requested command.
-     * 
-     * @param array $args command line arguments
-     * 
-     * @global array $commandNamespaces command namespaces
-     * 
-     * @action ON_BEFORE_GET_COMMAND_ACTION
-     * @action ON_AFTER_GET_COMMAND_ACTION
-     * 
-     * @filter ON_GET_COMMAND_FILTER(2)
-     * 
-     * @return ICommand the command
-     */
-    public function getCommand( $args );
-    
-    /**
-     * Processes the command line arguments and sets the option
-     * values for the command.
-     * 
-     * @param ICommand $command the command reference
-     * @param array    $args    command line args
-     * 
-     * @action ON_BEFORE_PROCESS_ARGS_ACTION
-     * @action ON_AFTER_PROCESS_ARGS_ACTION
-     * 
-     * @throws CommandException
-     */
-    public function processArgs( ICommand &$command, $args );
+    const INTEGER   = 'integer';
+    const DECIMAL   = 'decimal';
+    const STRING    = 'string';
+    const BOOLEAN   = 'boolean';
 }

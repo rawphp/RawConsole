@@ -23,11 +23,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * 
- * PHP version 5.3
+ * PHP version 5.4
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
- * @author    Tom Kaczohca <tom@rawphp.org>
+ * @package   RawPHP\RawConsole\Tests
+ * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
@@ -35,55 +35,64 @@
 
 namespace RawPHP\RawConsole\Tests;
 
+use RawPHP\RawConsole\Command;
 use RawPHP\RawConsole\Option;
 use RawPHP\RawConsole\Type;
 
 /**
- * Greet Command that adds last name option to the command.
+ * The Greet class with just name and yell option.
  * 
  * @category  PHP
- * @package   RawPHP/RawConsole
+ * @package   RawPHP\RawConsole\Tests
  * @author    Tom Kaczocha <tom@rawphp.org>
  * @copyright 2014 Tom Kaczocha
  * @license   http://rawphp.org/license.txt MIT
  * @link      http://rawphp.org/
  */
-class GreetFullCommand extends GreetCommand
+class GreetCommand extends Command
 {
     /**
      * Configures the command.
      */
-    public function configure()
+    public function configure( )
     {
-        parent::configure();
+        $this->name          = 'Greet Me';
+        $this->version       = 'v1.0.0';
+        $this->description   = 'Greets you by whatever name you want ;)';
+        $this->copyright     = '(c) 2014 RawPHP.org';
+        $this->supportSite   = 'https://github.com/rawphp/RawConsole/issues';
+        $this->supportSource = 'https://github.com/rawphp/RawConsole';
         
         $option = new Option( );
-        $option->shortCode   = 'l';
-        $option->longCode    = 'last';
+        $option->shortCode   = 'n';
+        $option->longCode    = 'name';
         $option->type        = Type::STRING;
-        $option->isOptional  = TRUE;
-        $option->shortDescription = 'If included, then it will greet by full name';
+        $option->isRequired  = TRUE;
+        $option->shortDescription = 'Name of person you want to greet';
+        $option->longDescription  = 'This is the name of the person you want to greet. 
+                                     It can be any name you like';
         
-        $this->options[] = $option;
+        $this->addOption( $option );
+        
+        $option = new Option( );
+        $option->shortCode   = 'y';
+        $option->longCode    = 'yell';
+        $option->type        = Type::BOOLEAN;
+        $option->isOptional  = TRUE;
+        $option->shortDescription = 'The greeting will be printed in uppercase letters';
+        
+        $this->addOption( $option );
     }
     
     /**
      * Executes the command action.
      */
-    public function execute()
+    public function execute( )
     {
         $name = self::getOption( $this, 'name' )->value;
-        $last = self::getOption( $this, 'last' )->value;
         $yell = ( bool )self::getOption( $this, 'yell' )->value;
         
-        $message = 'Hello, ' . $name;
-        
-        if ( !empty( $last ) )
-        {
-            $message .= ' ' . $last;
-        }
-        
-        $message .= PHP_EOL;
+        $message = 'Hello, ' . $name . PHP_EOL;
         
         if ( $yell )
         {
@@ -92,4 +101,5 @@ class GreetFullCommand extends GreetCommand
         
         echo $message;
     }
+
 }
