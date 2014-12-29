@@ -58,6 +58,8 @@ interface ICommand
      * Executes the primary command action.
      * 
      * Must be overridden by sub-classes.
+     *
+     * @return int status code
      */
     public function execute( );
     

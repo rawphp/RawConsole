@@ -86,6 +86,8 @@ class GreetCommand extends Command
     
     /**
      * Executes the command action.
+     *
+     * @return int status code
      */
     public function execute( )
     {
@@ -100,6 +102,8 @@ class GreetCommand extends Command
         }
         
         echo $message;
+
+        return 0;
     }
 
 }

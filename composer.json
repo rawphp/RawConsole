@@ -26,6 +26,7 @@
             "RawPHP\\RawConsole\\": "src/RawPHP/RawConsole/"
         }
     },
+    "bin": ["bin/console"],
     "extra": {
         "branch-alias": {
             "dev-master": "0.x-dev"

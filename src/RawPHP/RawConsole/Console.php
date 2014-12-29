@@ -83,6 +83,8 @@ class Console implements IConsole
      *
      * @param array $args command line arguments
      *
+     * @return int status code
+     *
      * @throws CommandException in exceptional circumstances
      */
     public function run( $args )
@@ -96,7 +98,7 @@ class Console implements IConsole
 
         $this->processArgs( $this->command, $args );
 
-        $this->command->execute();
+        return $this->command->execute();
     }
 
     /**

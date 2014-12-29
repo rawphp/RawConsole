@@ -69,6 +69,8 @@ class GreetFullCommand extends GreetCommand
     
     /**
      * Executes the command action.
+     *
+     * @return int status code
      */
     public function execute()
     {
@@ -91,5 +93,7 @@ class GreetFullCommand extends GreetCommand
         }
         
         echo $message;
+
+        return 0;
     }
 }
